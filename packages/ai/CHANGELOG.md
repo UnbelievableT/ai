@@ -1,5 +1,61 @@
 # ai
 
+## 7.0.176
+
+### Patch Changes
+
+- Updated dependencies [f886264]
+- Updated dependencies [d03d74a]
+  - @ai-sdk/gateway@4.0.149
+
+## 7.0.175
+
+### Patch Changes
+
+- Updated dependencies [ed981f8]
+  - @ai-sdk/gateway@4.0.148
+
+## 7.0.174
+
+### Patch Changes
+
+- 3bea041: feat(ai): support `output` in `startBatch` and parse it in `getBatchResults`
+- 30d35eb: Fix `streamText` passing `tools: undefined` to `experimental_transform` factories when no `tools` are provided. Transforms now receive an empty tool set, matching the `StreamTextTransform` type.
+- fab7478: Fix locked stream errors when telemetry subscribers or integrations replace a model stream whose request or response metadata requires credential redaction.
+- 10ff0b1: add extraction model support to provider registries, custom providers and string model ids
+- 718824c: Prevent excessive memory and CPU usage when validating UI messages with deeply nested provider or tool metadata. `validateUIMessages`, `safeValidateUIMessages`, and the agent UI stream helpers validated JSON values in `providerMetadata`, `callProviderMetadata`, `resultProviderMetadata`, `toolMetadata`, and citation metadata with a recursive union schema that needed several times the memory of the value, so a valid request could exhaust the memory of a worker before the model was called. These values are now validated in a single pass and are no longer copied, except to remove `__proto__` keys.
+- d99098a: Centralize empty extraction value normalization in `experimental_extract`, preserving missing-value behavior while removing duplicated conversion from extraction providers.
+- Updated dependencies [74042c5]
+- Updated dependencies [b8c01eb]
+- Updated dependencies [10ff0b1]
+- Updated dependencies [e878ab3]
+- Updated dependencies [d99098a]
+  - @ai-sdk/gateway@4.0.147
+  - @ai-sdk/provider@4.0.39
+  - @ai-sdk/provider-utils@5.0.82
+
+## 7.0.173
+
+### Patch Changes
+
+- 3c09e00: Prevent in-place schema validation or input refinement from changing approved tool arguments during approval replay.
+- f43ee39: fix(workflow): log the default step limit warning when `WorkflowAgent.generate()` stops at the default limit.
+- 7ce7ffc: fix(workflow): log provider warnings in `WorkflowAgent`
+
+  `WorkflowAgent.generate()` and `WorkflowAgent.stream()` now log the warnings of every model call through the AI SDK warning logger, like `ToolLoopAgent`. The `AI_SDK_LOG_WARNINGS` global controls the output.
+
+- f6809e3: fix(workflow): align the `prepareStep` results of `WorkflowAgent` with `ToolLoopAgent`. Returned `instructions` (or the deprecated `system`) replace the instructions of the step and carry forward to later steps, returned `providerOptions` are merged with the agent options, and returned `headers` are merged over the headers of the call.
+- 2559173: feat(workflow): support `toolApproval` in `WorkflowAgent`
+
+  `WorkflowAgent` accepts a `toolApproval` configuration in the constructor and per `generate()` or `stream()` call. The configuration takes precedence over a tool's `needsApproval` setting, and its functions run in workflow context, outside of the durable model steps. Calls that the configuration approves run in the same step, and calls that it denies receive an `execution-denied` tool result without pausing the workflow.
+
+- f1de9cb: feat(workflow): support the `timeout` object in `WorkflowAgent`
+
+  `generate()` and `stream()` accept `timeout: { totalMs, stepMs, firstChunkMs, chunkMs }` in addition to a number. `stepMs` limits each model call. In `stream()`, `firstChunkMs` and `chunkMs` limit the wait for model output. Invalid timeout values are rejected with an `InvalidArgumentError`. A timeout now also ends a model step when the provider stream ignores the abort signal.
+
+- Updated dependencies [9baa2d0]
+  - @ai-sdk/gateway@4.0.146
+
 ## 7.0.172
 
 ### Patch Changes

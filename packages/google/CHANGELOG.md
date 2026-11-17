@@ -1,5 +1,32 @@
 # @ai-sdk/google
 
+## 4.0.122
+
+### Patch Changes
+
+- 3bea041: fix(google): reject structured output schemas in batch requests because inline Google batch requests ignore `responseJsonSchema`
+- b0fccbd: fix(provider/google): redact MCP server credentials in telemetry
+
+  Google Interactions MCP server headers can contain connector credentials, which
+  were recorded in tool telemetry. `google.tools.mcpServer` now provides a
+  redacted telemetry view of its header values, and Interactions request bodies do
+  the same for provider error reporting, while the actual request keeps the
+  credentials.
+
+- a4de3a2: fix(google): include `promptFeedback.blockReasonMessage` in provider metadata
+- Updated dependencies [10ff0b1]
+- Updated dependencies [e878ab3]
+- Updated dependencies [d99098a]
+  - @ai-sdk/provider@4.0.39
+  - @ai-sdk/provider-utils@5.0.82
+
+## 4.0.121
+
+### Patch Changes
+
+- f5fc6ba: Derive known model ID suggestions from each provider's model catalog declarations so catalog updates automatically update autocomplete, while preserving existing suggestions, endpoint-specific model lists, and support for custom model IDs.
+- 8e60cb4: Fix Google Interactions ignoring top-level `reasoning` in generation and streaming calls. Map reasoning to model-supported thinking levels, including Hydrogen's `xhigh`, preserve explicit `thinkingLevel` overrides and API defaults, and warn when reasoning is unsupported.
+
 ## 4.0.120
 
 ### Patch Changes

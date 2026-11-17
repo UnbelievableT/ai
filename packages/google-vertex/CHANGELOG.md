@@ -1,5 +1,38 @@
 # @ai-sdk/google-vertex
 
+## 5.0.142
+
+### Patch Changes
+
+- b0fccbd: fix(provider/google): redact MCP server credentials in telemetry
+
+  Expose `googleVertex.tools.mcpServer` for Google Vertex Interactions models. Its
+  MCP server header values are redacted from telemetry, matching
+  `@ai-sdk/google`.
+
+- Updated dependencies [3bea041]
+- Updated dependencies [10ff0b1]
+- Updated dependencies [e878ab3]
+- Updated dependencies [d99098a]
+- Updated dependencies [b0fccbd]
+- Updated dependencies [a4de3a2]
+  - @ai-sdk/google@4.0.122
+  - @ai-sdk/provider@4.0.39
+  - @ai-sdk/provider-utils@5.0.82
+  - @ai-sdk/anthropic@4.0.106
+  - @ai-sdk/openai-compatible@3.0.93
+
+## 5.0.141
+
+### Patch Changes
+
+- f5fc6ba: Derive known model ID suggestions from each provider's model catalog declarations so catalog updates automatically update autocomplete, while preserving existing suggestions, endpoint-specific model lists, and support for custom model IDs.
+- c8fb453: Add the missing `gemini-4-hydrogen` model ID to the Vertex catalog so model suggestions and generated capability documentation include it.
+- Updated dependencies [f5fc6ba]
+- Updated dependencies [8e60cb4]
+  - @ai-sdk/anthropic@4.0.105
+  - @ai-sdk/google@4.0.121
+
 ## 5.0.140
 
 ### Patch Changes

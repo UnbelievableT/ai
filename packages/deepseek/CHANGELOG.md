@@ -1,5 +1,21 @@
 # @ai-sdk/deepseek
 
+## 3.0.88
+
+### Patch Changes
+
+- Updated dependencies [10ff0b1]
+- Updated dependencies [e878ab3]
+- Updated dependencies [d99098a]
+  - @ai-sdk/provider@4.0.39
+  - @ai-sdk/provider-utils@5.0.82
+
+## 3.0.87
+
+### Patch Changes
+
+- f5fc6ba: Derive known model ID suggestions from each provider's model catalog declarations so catalog updates automatically update autocomplete, while preserving existing suggestions, endpoint-specific model lists, and support for custom model IDs.
+
 ## 3.0.86
 
 ### Patch Changes
